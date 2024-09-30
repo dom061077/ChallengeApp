@@ -19,6 +19,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderController',{
     },
     initView: function(view){
         var store = this.getPurchaseOrderStoreStore();
+        console.log('Header: ',view.headerCt);
         view.bindStore(store);
     },
     /*

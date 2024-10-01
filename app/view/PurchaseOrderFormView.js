@@ -11,9 +11,9 @@ fieldDefaults: {
     anchor: '100%'
 },
 //layout: 'vbox',
-/*events: {
-    refresh: true
-},*/
+viewConfig:{
+    loadMask: true
+},    
 autoScroll: true,
 items:[
     {

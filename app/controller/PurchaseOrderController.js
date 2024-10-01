@@ -8,12 +8,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderController',{
             'purchaseorderview': {
                 afterrender: this.initView,
                 itemdblclick: this.OnDblClick
-            },
-            /*
-            'purchaseorderview button[action=groupDate]':{
-                click: this.onGroupDate
             }
-            */
         }
         );
     },
@@ -21,25 +16,24 @@ Ext.define('ChallengeApp.controller.PurchaseOrderController',{
         var store = this.getPurchaseOrderStoreStore();
         console.log('Header: ',view.headerCt);
         /*var headerCt = view.headerCt;
+        no puede manejar el doble click en la columna. Creo que el SDK no es el correcto por eso salta un error en la consola
+        cuando interactuuo con los headers.
         headerCt.on('headerdblclick', function (ct, column, e, t) {
-            Ext.Msg.alert('Header Double Click', 'You double-clicked on the "' + column.text + '" column header!');
+            
         }); */       
         view.bindStore(store);
     },
-    /*
-    onGroupDate: function(button, event, options){
 
-    }*/
    OnDblClick: function( grid, record, item, index, e, eOpts ){
     var form = Ext.widget('purchaseorderformview',{
         record: record,
         oldRecord: record
     });
      var win = Ext.widget('window',{
-        //layout: 'fit',
+
         title: 'Purchase Order View',
         width: 450,
-        height: 450,
+        height: 380,
         border: false,
         modal: true,
         closeAction: 'destroy',

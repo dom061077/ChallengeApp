@@ -77,21 +77,6 @@ items:[
                 itemId: 'detail', 
                 columns:[
                     {
-                        xtype: 'actioncolumn',
-                        width: 60,
- 
-                        items: [
-                            {
-                                iconCls: 'icon-basket-remove',
-                                text: 'Eliminar',
-                                tooltip: 'Remove detail row',
-                                handler: function(grid, rowIndex, colIndex, item, event){
-                                    var view = grid.up('purchaseorderformview');
-                                    view.fireEvent('removeDetail',item);
-                                }
-                            }
-                        ]      
-                    },{
                         header: 'Id',
                         dataIndex: 'Id'
                     },{
@@ -112,11 +97,11 @@ items:[
 buttons:[
     {
         text: 'Save',
-        iconCls: 'icon-save',
+        iconCls: 'icon-database-save',
         itemId: 'save'
     },{
         text: 'Reset',
-        iconCls: 'icon-reset',
+        iconCls: 'icon-arrow-refresh',
         itemId: 'reset'
     },{
         text: 'Cancel',

@@ -9,7 +9,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
         this.control({
             'purchaseorderformview': {
                 afterrender: this.initView,
-                removeDetail: this.onRemoveDetail
+
             },
             'purchaseorderformview #cancel': {
                 click: this.onCancel
@@ -20,11 +20,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
             'purchaseorderformview #save': {
                 click: this.onSave
             }                        
-            /*
-            'purchaseorderview button[action=groupDate]':{
-                click: this.onGroupDate
-            }
-            */
+
         }
         );
     },
@@ -60,26 +56,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
         gridDetail.bindStore(store);
     },   
 
-    isDirty: function(changes,oldRecord){
-        var dirty=false;
-        if(changes.Date){
-            if(changes.Date!= oldRecord.get('Date'))
-                dirty=true;
-        }
-        if(changes.ClientId){
-            dirty=true;
-        }
-        if(changes.Status){
-            dirty=true;
-        }        
-        if(changes.Total){
-            dirty=true;
-        }      
-        if(changes.Currency){
-            dirty=true;
-        }                
-        return dirty;
-    },
+
     onCancel: function(btn){
         var view = btn.up('purchaseorderformview');
         var win = btn.up('purchaseorderformview').up('window');
@@ -129,42 +106,3 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
 
 });
 
-/*
-
-
-// Sample JSON string
-var jsonString = '[{"id": 1, "name": "John Doe"}, {"id": 2, "name": "Jane Doe"}]';
-
-// Convert JSON string to a JavaScript array
-var jsonData = Ext.decode(jsonString);
-
-// Define a model for the store
-Ext.define('User', {
-    extend: 'Ext.data.Model',
-    fields: ['id', 'name']
-});
-
-// Create a store
-var store = Ext.create('Ext.data.Store', {
-    model: 'User'
-});
-
-// Load the data into the store
-store.loadData(jsonData);
-
-// Verify the store content (For debugging purpose)
-console.log(store.getData().items);
-
-// Use the store in a grid or other component
-Ext.create('Ext.grid.Panel', {
-    title: 'Users',
-    store: store,
-    columns: [
-        { text: 'ID', dataIndex: 'id' },
-        { text: 'Name', dataIndex: 'name' }
-    ],
-    renderTo: Ext.getBody()
-});
-
-
-*/

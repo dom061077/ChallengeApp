@@ -4,12 +4,12 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
     extend: 'Ext.app.Controller',
     views: ['PurchaseOrderFormView'],
     stores: ['ClientStore','CurrencyStore'],
-    models: ['PurchaseOrderModel'],
+    models: ['PurchaseOrderModel','PurchaseOrderDetailModel'],
     init: function(app){
         this.control({
             'purchaseorderformview': {
-                afterrender: this.initView
-
+                afterrender: this.initView,
+                removeDetail: this.onRemoveDetail
             },
             'purchaseorderformview #cancel': {
                 click: this.onCancel
@@ -29,7 +29,7 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
         );
     },
     initView: function(view){
-
+        var controller = this;
         var currencyStore = this.getCurrencyStoreStore();
         var currencyCmb = view.down('#currencyCmb');
         currencyCmb.bindStore(currencyStore);
@@ -39,10 +39,27 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
         store.load({
             callback: function(){
                 view.loadRecord(view.record); //estoy teniendo una race condition por eso hago el loadrecord aquí
+                controller.loadDetail(view.record.get('Detail'), view);
             }
         });
         
     },
+
+    onRemoveDetail: function(item){
+        console.log('Item del action remove',item);
+    },
+
+    loadDetail: function(jsonStr, view){
+        var json = Ext.decode(jsonStr);
+        var detailModel = this.getPurchaseOrderDetailModelModel();
+        var store = Ext.create('Ext.data.Store', {
+            model: detailModel
+        });
+        store.loadData(json);
+        var gridDetail = view.down('#detail');
+        gridDetail.bindStore(store);
+    },   
+
     isDirty: function(changes,oldRecord){
         var dirty=false;
         if(changes.Date){
@@ -102,19 +119,14 @@ Ext.define('ChallengeApp.controller.PurchaseOrderFormController',{
         Ext.MessageBox.show({
             title:'Message',
             icon: Ext.MessageBox.WARNING,   
+            buttons: Ext.MessageBox.OK,
             msg:'Record saved',
             fn: function(btn){
                 view.up('window').close();
             }
         });
-    },
-    loadDetail: function(orderId){
-
     }
-    /*
-    onGroupDate: function(button, event, options){
 
-    }*/
 });
 
 /*

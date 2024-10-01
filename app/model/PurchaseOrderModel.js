@@ -21,6 +21,9 @@ Ext.define('ChallengeApp.model.PurchaseOrderModel',{
         },{
             name: 'Currency',
             type: 'string'
+        },{
+            name: 'Detail',
+            type: 'string'
         }
 
  /*       Status,

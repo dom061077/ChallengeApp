@@ -69,14 +69,31 @@ items:[
         xtype: 'panel',
         height: 150,
         title: 'Detail',
+        
         items: [
 
             {
                 xtype: 'grid',
+                itemId: 'detail', 
                 columns:[
                     {
+                        xtype: 'actioncolumn',
+                        width: 60,
+ 
+                        items: [
+                            {
+                                iconCls: 'icon-basket-remove',
+                                text: 'Eliminar',
+                                tooltip: 'Remove detail row',
+                                handler: function(grid, rowIndex, colIndex, item, event){
+                                    var view = grid.up('purchaseorderformview');
+                                    view.fireEvent('removeDetail',item);
+                                }
+                            }
+                        ]      
+                    },{
                         header: 'Id',
-                        dataInde: 'Id'
+                        dataIndex: 'Id'
                     },{
                         header: 'Product',
                         dataIndex: 'ProductDesc'
@@ -95,12 +112,15 @@ items:[
 buttons:[
     {
         text: 'Save',
+        iconCls: 'icon-save',
         itemId: 'save'
     },{
         text: 'Reset',
+        iconCls: 'icon-reset',
         itemId: 'reset'
     },{
         text: 'Cancel',
+        iconCls: 'icon-basket-remove',
         itemId: 'cancel'
     }
 ],

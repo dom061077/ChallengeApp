@@ -20,6 +20,10 @@ Ext.define('ChallengeApp.controller.PurchaseOrderController',{
     initView: function(view){
         var store = this.getPurchaseOrderStoreStore();
         console.log('Header: ',view.headerCt);
+        /*var headerCt = view.headerCt;
+        headerCt.on('headerdblclick', function (ct, column, e, t) {
+            Ext.Msg.alert('Header Double Click', 'You double-clicked on the "' + column.text + '" column header!');
+        }); */       
         view.bindStore(store);
     },
     /*

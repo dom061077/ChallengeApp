@@ -18,20 +18,14 @@ Price
             name: 'Id',
             type: 'int'
         },{
-            name: 'Date',
+            name: 'ProductDesc',
             type: 'string'
         },{
-            name: 'ClientId',
+            name: 'Quantity',
             type: 'int',
         },{
-            name: 'Status',
-            type: 'string' 
-        },{
-            name: 'Total',
+            name: 'Price',
             type: 'number'
-        },{
-            name: 'Currency',
-            type: 'string'
         }
     ]
 

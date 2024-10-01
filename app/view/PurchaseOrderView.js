@@ -2,6 +2,24 @@ Ext.define('ChallengeApp.view.PurchaseOrderView',{
     extend : 'Ext.grid.Panel',
     alias : 'widget.purchaseorderview',
     title: 'Purchase Order',
+    viewConfig: {
+        // This option ensures rows are highlighted on hover
+        //stripeRows: true,
+        /*enableTextSelection: true,  // optional for text selection on hover
+        listeners: {
+            itemmouseenter: function(view, record, item, index, e, options) {
+                // This ensures that item highlighting occurs only if the item exists
+                if (item) {
+                    Ext.fly(item).addCls('my-highlight-class');
+                }
+            },
+            itemmouseleave: function(view, record, item, index, e, options) {
+                if (item) {
+                    Ext.fly(item).removeCls('my-highlight-class');
+                }
+            }
+        }*/
+    },    
     features: [
         {
             ftype: 'grouping',
